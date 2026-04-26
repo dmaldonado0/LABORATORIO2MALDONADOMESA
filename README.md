@@ -348,7 +348,28 @@ Interpretar señales analógicas provenientes de un sensor óptico.
 
 ## Código
 ```cpp
-// Código sensor aquí
+const int sensorPin = A0;  
+const int ledPin = 3;      
+
+int umbral = 500;          
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int valor = analogRead(sensorPin);
+  Serial.println(valor);
+
+  if (valor < umbral) {
+    digitalWrite(ledPin, HIGH); // Negro LED encendido
+  } else {
+    digitalWrite(ledPin, LOW);  // Blanco LED apagado
+  }
+
+  delay(100);
+}
 ```
 
 ## Resultados
