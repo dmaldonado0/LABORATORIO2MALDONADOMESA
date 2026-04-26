@@ -250,7 +250,6 @@ void setup() {
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
   display.clearDisplay();
 
-  // Inicializar snake
   for (int i = 0; i < length; i++) {
     snakeX[i] = 10 - i;
     snakeY[i] = 10;
@@ -284,7 +283,6 @@ void loop() {
     }
   }
 
-  // Mover snake
   for (int i = length - 1; i > 0; i--) {
     snakeX[i] = snakeX[i - 1];
     snakeY[i] = snakeY[i - 1];
@@ -295,7 +293,6 @@ void loop() {
   if (dir == 2) snakeY[0]++;
   if (dir == 3) snakeX[0]--;
 
-  // Comer comida
   if (snakeX[0] == foodX && snakeY[0] == foodY) {
     length++;
     spawnFood();
