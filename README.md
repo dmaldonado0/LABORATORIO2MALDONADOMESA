@@ -182,7 +182,8 @@ Desarrollar un sistema visual interactivo con salida gráfica.
 
 ## Materiales
 - Arduino UNO  
-- Pantalla OLED  
+- Pantalla OLED
+- Pulsadores 
 
 ## Conexión del Circuito
  <img src="https://github.com/dmaldonado0/LABORATORIO2MALDONADOMESA/blob/main/imagen%20juego.jpeg" width="300"/>
@@ -195,7 +196,123 @@ Desarrollar un sistema visual interactivo con salida gráfica.
 
 ## Código
 ```cpp
-// Código OLED aquí
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include <Wire.h>
+
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+
+#define BTN_UP 2
+#define BTN_DOWN 3
+#define BTN_LEFT 4
+#define BTN_RIGHT 5
+
+#define SIZE 4
+
+int snakeX[100];
+int snakeY[100];
+int length = 5;
+
+// Dirección (0=arriba,1=derecha,2=abajo,3=izquierda)
+int dir = 1;
+
+int foodX, foodY;
+
+unsigned long lastPress = 0;
+int debounceDelay = 120;
+
+void spawnFood() {
+  foodX = random(0, SCREEN_WIDTH / SIZE);
+  foodY = random(0, SCREEN_HEIGHT / SIZE);
+}
+
+void setup() {
+  pinMode(BTN_UP, INPUT_PULLUP);
+  pinMode(BTN_DOWN, INPUT_PULLUP);
+  pinMode(BTN_LEFT, INPUT_PULLUP);
+  pinMode(BTN_RIGHT, INPUT_PULLUP);
+
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+  display.clearDisplay();
+
+  // Inicializar snake
+  for (int i = 0; i < length; i++) {
+    snakeX[i] = 10 - i;
+    snakeY[i] = 10;
+  }
+
+  spawnFood();
+}
+
+void loop() {
+
+  if (millis() - lastPress > debounceDelay) {
+
+    if (digitalRead(BTN_UP) == LOW && dir != 2) {
+      dir = 0;
+      lastPress = millis();
+    }
+
+    else if (digitalRead(BTN_RIGHT) == LOW && dir != 3) {
+      dir = 1;
+      lastPress = millis();
+    }
+
+    else if (digitalRead(BTN_DOWN) == LOW && dir != 0) {
+      dir = 2;
+      lastPress = millis();
+    }
+
+    else if (digitalRead(BTN_LEFT) == LOW && dir != 1) {
+      dir = 3;
+      lastPress = millis();
+    }
+  }
+
+  // Mover snake
+  for (int i = length - 1; i > 0; i--) {
+    snakeX[i] = snakeX[i - 1];
+    snakeY[i] = snakeY[i - 1];
+  }
+
+  if (dir == 0) snakeY[0]--;
+  if (dir == 1) snakeX[0]++;
+  if (dir == 2) snakeY[0]++;
+  if (dir == 3) snakeX[0]--;
+
+  // Comer comida
+  if (snakeX[0] == foodX && snakeY[0] == foodY) {
+    length++;
+    spawnFood();
+  }
+
+  if (snakeX[0] < 0 || snakeX[0] >= SCREEN_WIDTH / SIZE ||
+      snakeY[0] < 0 || snakeY[0] >= SCREEN_HEIGHT / SIZE) {
+
+    length = 5;
+    dir = 1;
+
+    for (int i = 0; i < length; i++) {
+      snakeX[i] = 10 - i;
+      snakeY[i] = 10;
+    }
+  }
+
+  display.clearDisplay();
+
+  for (int i = 0; i < length; i++) {
+    display.fillRect(snakeX[i] * SIZE, snakeY[i] * SIZE, SIZE, SIZE, WHITE);
+  }
+
+  display.fillRect(foodX * SIZE, foodY * SIZE, SIZE, SIZE, WHITE);
+
+  display.display();
+
+  delay(100);
+}
 ```
 
 ## Resultados
@@ -203,7 +320,7 @@ Desarrollar un sistema visual interactivo con salida gráfica.
 - ✔ Funcionamiento fluido
 
 # VIDEO FUNCIONAMIENTO:
-
+https://unipanamericanaeduco-my.sharepoint.com/:f:/g/personal/danielamaldonado_ucompensar_edu_co/IgCBzYAvCB9wTacga_oiqWPwAeaBEQxE5fAlWVDAlyHrvok?e=ie5zZf
 ---
 
 # 🔹 Punto 3: Detector de Colores con CNY70
