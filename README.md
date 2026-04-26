@@ -182,6 +182,22 @@ while True:
 
 # VIDEO FUNCIONAMIENTO:
 https://unipanamericanaeduco-my.sharepoint.com/:f:/g/personal/danielamaldonado_ucompensar_edu_co/IgBtgWaWbDYTQbpJOH2Ys0HjAUxWp9R6gNYgSFfIyYJv83g?e=qnaglE
+
+### EXPLICACION:
+En este sistema se desarrolló un chatbot que se comunica con un Arduino Uno mediante comunicación serial, permitiendo controlar LEDs y consultar datos de temperatura y humedad en tiempo real.
+
+El funcionamiento se basa en la interacción entre un programa en Python y el Arduino. El usuario ingresa mensajes a través de la consola, los cuales son procesados por el programa en Python. Dependiendo del contenido del mensaje, se envían comandos específicos al Arduino a través del puerto serial.
+
+El Arduino recibe estos comandos y ejecuta distintas acciones:
+
+Cuando recibe el comando "msg", enciende ambos LEDs como indicación de actividad.
+Cuando recibe "datos", el sensor DHT11 mide la temperatura y la humedad del ambiente, y envía estos valores de vuelta al programa en Python.
+Si recibe "off", apaga los LEDs.
+
+Por su parte, el programa en Python interpreta la respuesta del Arduino y muestra los datos al usuario de forma legible. Si el usuario pregunta por temperatura o humedad, el sistema responde con los valores obtenidos; de lo contrario, el chatbot indica que no reconoce la solicitud.
+
+Durante las pruebas se comprobó que la comunicación serial es estable, permitiendo un intercambio de datos fluido entre ambos sistemas. Además, se logró una correcta lectura del sensor y un control efectivo de los LEDs, validando la integración entre software y hardware.
+
 ---
 
 # 🔹 Punto 2: Juego en Pantalla OLED
@@ -330,6 +346,22 @@ void loop() {
 
 # VIDEO FUNCIONAMIENTO:
 https://unipanamericanaeduco-my.sharepoint.com/:f:/g/personal/danielamaldonado_ucompensar_edu_co/IgCBzYAvCB9wTacga_oiqWPwAeaBEQxE5fAlWVDAlyHrvok?e=ie5zZf
+
+### EXPLICACION:
+En este circuito se implementó un juego básico tipo “Snake” utilizando una pantalla OLED controlada por un Arduino Uno. El objetivo fue comprobar la capacidad del sistema para generar gráficos y permitir la interacción mediante botones.
+
+La pantalla Pantalla OLED SSD1306 se encarga de mostrar los elementos del juego, mientras que los pulsadores permiten controlar el movimiento de la serpiente en distintas direcciones.
+
+El funcionamiento del sistema se desarrolla de la siguiente manera:
+
+Al iniciar, se configura la pantalla y se dibuja la serpiente en una posición inicial.
+Mediante los botones, el usuario puede cambiar la dirección del movimiento (arriba, abajo, izquierda, derecha).
+La serpiente se desplaza continuamente por la pantalla, actualizando su posición en cada ciclo del programa.
+Se genera un “alimento” en una posición aleatoria; cuando la serpiente lo alcanza, aumenta su tamaño.
+Si la serpiente sale de los límites de la pantalla, el juego se reinicia automáticamente.
+
+Durante las pruebas se observó que el sistema responde correctamente a las entradas de los botones y actualiza los gráficos en tiempo real, logrando una animación fluida y una interacción efectiva entre el usuario y el sistema.
+
 ---
 
 # 🔹 Punto 3: Detector de Colores con CNY70
@@ -387,6 +419,19 @@ void loop() {
 
 # VIDEO FUNCIONAMIENTO:
 https://unipanamericanaeduco-my.sharepoint.com/:f:/g/personal/danielamaldonado_ucompensar_edu_co/IgB1ZyB9bRz4Qbsz9a9YALgFAebuqkxCq2pCawgGBGJX8WQ?e=0L4Bs7
+
+### EXPLICACION:
+
+En este circuito se realizó una prueba del sensor óptico CNY70 con el fin de verificar su correcto funcionamiento y analizar los valores analógicos que proporciona.
+
+El sensor emite luz infrarroja hacia una superficie, y dependiendo del color de esta, la cantidad de luz reflejada cambia. Esta variación se traduce en una señal analógica que el Arduino Uno puede interpretar.
+
+Durante las pruebas se observó que:
+
+Cuando el sensor detecta una superficie oscura (negra), la reflexión de luz es menor, lo que genera valores analógicos bajos (menores a 500). En este caso, el sistema enciende el LED.
+Cuando detecta una superficie clara (blanca), la reflexión es mayor, produciendo valores altos (mayores a 500), lo que provoca que el LED se apague.
+
+De esta manera, el circuito permite diferenciar entre superficies claras y oscuras utilizando un umbral definido, validando el correcto funcionamiento tanto del sensor como del sistema de lectura analógica.
 
 ---
 
