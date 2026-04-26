@@ -62,7 +62,7 @@ Implementar comunicación serial entre Python y Arduino para controlar actuadore
 - Computador con Python  
 
 ## Conexión del Circuito
- <img src="" width="300"/>
+ <img src="https://github.com/dmaldonado0/LABORATORIO2MALDONADOMESA/blob/main/TEMPPP.jpeg" width="300"/>
 
 ## Funcionamiento
 1. Usuario envía mensaje  
@@ -105,7 +105,7 @@ Desarrollar un sistema visual interactivo con salida gráfica.
 - Pantalla OLED  
 
 ## Conexión del Circuito
- <img src="" width="300"/>
+ <img src="https://github.com/dmaldonado0/LABORATORIO2MALDONADOMESA/blob/main/imagen%20juego.jpeg" width="300"/>
 
 ## Funcionamiento
 1. Inicialización de pantalla  
@@ -141,7 +141,7 @@ Interpretar señales analógicas provenientes de un sensor óptico.
 - Protoboard  
 
 ## Conexión del Circuito
- <img src="" width="300"/>
+ <img src="https://github.com/dmaldonado0/LABORATORIO2MALDONADOMESA/blob/main/imagencolormejor.jpeg" width="300"/>
 
 ## Funcionamiento
 1. Sensor emite luz  
