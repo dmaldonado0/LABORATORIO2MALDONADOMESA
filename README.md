@@ -10,6 +10,7 @@
 
 ASIGNATURA:
 SISTEMAS DIGITALES
+
 DOCENTE:
 - *Diego Alejandro Barragan Vargas*
 
