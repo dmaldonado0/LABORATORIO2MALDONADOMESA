@@ -62,7 +62,7 @@ Implementar comunicación serial entre Python y Arduino para controlar actuadore
 - Computador con Python  
 
 ## Conexión del Circuito
-*(Agregar imagen o explicación)*
+ <img src="" width="300"/>
 
 ## Funcionamiento
 1. Usuario envía mensaje  
@@ -88,6 +88,8 @@ Implementar comunicación serial entre Python y Arduino para controlar actuadore
 - ✔ Lectura de temperatura correcta  
 - ✔ Comunicación estable  
 
+# VIDEO FUNCIONAMIENTO:
+https://unipanamericanaeduco-my.sharepoint.com/:f:/g/personal/danielamaldonado_ucompensar_edu_co/IgBtgWaWbDYTQbpJOH2Ys0HjAUxWp9R6gNYgSFfIyYJv83g?e=qnaglE
 ---
 
 # 🔹 Punto 2: Juego en Pantalla OLED
@@ -102,6 +104,9 @@ Desarrollar un sistema visual interactivo con salida gráfica.
 - Arduino UNO  
 - Pantalla OLED  
 
+## Conexión del Circuito
+ <img src="" width="300"/>
+
 ## Funcionamiento
 1. Inicialización de pantalla  
 2. Dibujado de gráficos  
@@ -115,7 +120,9 @@ Desarrollar un sistema visual interactivo con salida gráfica.
 
 ## Resultados
 - ✔ Visualización correcta  
-- ✔ Funcionamiento fluido  
+- ✔ Funcionamiento fluido
+
+# VIDEO FUNCIONAMIENTO:
 
 ---
 
@@ -133,6 +140,9 @@ Interpretar señales analógicas provenientes de un sensor óptico.
 - Resistencias  
 - Protoboard  
 
+## Conexión del Circuito
+ <img src="" width="300"/>
+
 ## Funcionamiento
 1. Sensor emite luz  
 2. Superficie refleja  
@@ -147,6 +157,9 @@ Interpretar señales analógicas provenientes de un sensor óptico.
 ## Resultados
 - ✔ Detección básica de colores  
 - ✔ Lecturas estables  
+
+# VIDEO FUNCIONAMIENTO:
+https://unipanamericanaeduco-my.sharepoint.com/:f:/g/personal/danielamaldonado_ucompensar_edu_co/IgB1ZyB9bRz4Qbsz9a9YALgFAebuqkxCq2pCawgGBGJX8WQ?e=0L4Bs7
 
 ---
 
