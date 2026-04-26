@@ -1,8 +1,18 @@
+ <img src="https://www.elempleo.com/co/sitio-empresarial/CompanySites/unicompensar/resources/images/logo-social.png" width="500"/>
+
 # 🧪 LABORATORIO II – Sistemas Digitales
 
 ### INTEGRANTES:
 - Daniel Alejandro Maldonado Silva
+  danielamaldonado@ucompensar.edu.co
 - David Esteban Mesa Gonzalez
+  destebanmesa@ucompensar.edu.co
+
+ASIGNATURA:
+SISTEMAS DIGITALES
+DOCENTE:
+- *Diego Alejandro Barragan Vargas*
+
 
 ## Objetivo General
 
