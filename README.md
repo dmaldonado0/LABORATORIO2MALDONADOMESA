@@ -75,12 +75,92 @@ Implementar comunicación serial entre Python y Arduino para controlar actuadore
 
 ### Arduino
 ```cpp
-// Código Arduino aquí
+#include <DHT.h>
+
+#define DHTPIN 7
+#define DHTTYPE DHT11
+
+DHT dht(DHTPIN, DHTTYPE);
+
+#define LED_ROJO 8
+#define LED_VERDE 9
+
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(LED_ROJO, OUTPUT);
+  pinMode(LED_VERDE, OUTPUT);
+
+  dht.begin();
+}
+
+void loop() {
+
+  if (Serial.available()) {
+    String comando = Serial.readStringUntil('\n');
+    comando.trim();
+
+    if (comando == "msg") {
+      digitalWrite(LED_ROJO, HIGH);
+      digitalWrite(LED_VERDE, HIGH);
+    }
+
+    else if (comando == "datos") {
+      float t = dht.readTemperature();
+      float h = dht.readHumidity();
+
+      if (isnan(t) || isnan(h)) {
+        Serial.println("ERROR");
+      } else {
+        Serial.print(t);
+        Serial.print(",");
+        Serial.println(h);
+      }
+    }
+
+    else if (comando == "off") {
+      digitalWrite(LED_ROJO, LOW);
+      digitalWrite(LED_VERDE, LOW);
+    }
+  }
+}
 ```
 
 ### Python
 ```python
-# Código chatbot aquí
+import serial
+import time
+
+arduino = serial.Serial('COM3', 9600) 
+time.sleep(2)
+
+print("Chatbot listo")
+
+while True:
+    msg = input("Tú: ").lower()
+
+   
+    arduino.write(b"msg\n")
+
+    if "temperatura" in msg or "humedad" in msg:
+        arduino.write(b"datos\n")
+        time.sleep(1)
+
+        if arduino.in_waiting:
+            data = arduino.readline().decode().strip()
+
+            if data == "ERROR":
+                print("Bot: Error leyendo sensor")
+            else:
+                temp, hum = data.split(",")
+
+                print(f"Manito La Temperatura es: {temp} °C")
+                print(f"UY Mano La Humedad: {hum} %")
+
+    else:
+        print("Bot: lirul hand no se de eso, Pregúntame por la temperatura o la humedad")
+
+    arduino.write(b"off\n")
 ```
 
 ## Resultados
